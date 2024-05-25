@@ -3,6 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ThemeProvider } from "./DarkModeProvider";
+import DarkLightToggle from "@/components/shadCn/DarkLightToggle";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,6 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="flex items-center justify-end border-b border-secondary-foreground h-20 px-10">
+            <DarkLightToggle />
+          </div>
           {children}
         </ThemeProvider>
       </body>
