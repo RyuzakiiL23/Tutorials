@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import ImageUploader from "./ImageUploader";
 
 export default function AddProductDialog() {
   return (
@@ -19,19 +20,13 @@ export default function AddProductDialog() {
         <DialogTrigger asChild>
           <Button variant="outline">+ Add Product</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="max-w-fit">
           <DialogHeader>
             <DialogTitle>Add Your Product</DialogTitle>
           </DialogHeader>
+          <div className="w-screen">
+            <ImageUploader />
 
-          
-          <div className="flex gap-4">
-            <Button type="button" variant="secondary">
-              Cancel
-            </Button>
-            <Button type="button">
-              Submit
-            </Button>
           </div>
         </DialogContent>
       </Dialog>
