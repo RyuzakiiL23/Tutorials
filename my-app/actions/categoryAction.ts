@@ -34,7 +34,7 @@ export const createCategory = async (formData: FormData) => {
     if (message.includes("duplicate key error")) {
       return { message: "category already exists" };
     }
-    return {message: 'error creating Category'};
+    return { message: "error creating Category" };
   }
 };
 
@@ -45,14 +45,20 @@ export const getCategories = async () => {
     const categories = await Category.find().lean();
     // Returning the fetched todos
     console.log(categories);
+    if (!categories) {
+      return { message: "no categories found" };
+    }
     categories.map((category) => {
       category._id = category._id.toString();
-      category.store = category.store.toString();
+      if (category.store) {
+        category.store = category.store.toString();
+      }
     });
     return categories;
   } catch (error) {
     // Returning an error message if fetching todos fails
-    return { message: "error fetching categories" };
+    // return { message: "error fetching categories" };
+    return { message: getErrorMessage(error) };
   }
 };
 
